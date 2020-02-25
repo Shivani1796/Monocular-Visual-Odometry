@@ -27,9 +27,12 @@
 
 #define MAX_FRAME 2000
 #define MIN_NUM_FEAT 2000
-
-const static char* dataset_images_location = "/home/mez/dataset/kitti/dataset/sequences/00/image_1";
-const static char* dataset_poses_location = "/home/mez/dataset/kitti/odomerty_poses/poses/00.txt";
+//KittiDataset
+const static char* dataset_images_location = "/home/shivani/Documents/KittiDataset/image_0/";
+const static char* dataset_poses_location = "/home/shivani/Documents/KittiDataset/poses/00.txt";
+//My-dataset
+//const static char* dataset_images_location = "/home/shivani/Documents/mydataset/Testdataset8/output";
+//const static char* dataset_poses_location = "/home/shivani/Documents/mydataset/Testdataset8/poses/s00.txt";
 
 
 vector<Point2f> getGreyCamGroundPoses() {
@@ -141,9 +144,12 @@ int main(int argc, char** argv) {
   double scale = 1.00;
   char filename1[200];
   char filename2[200];
+  //Kitti Dataset
   sprintf(filename1, "%s/%06d.png", dataset_images_location, 0);
   sprintf(filename2, "%s/%06d.png", dataset_images_location, 1);
-
+  //MyDataset
+ // sprintf(filename1, "%s/%d.png", dataset_images_location, 1);
+ // sprintf(filename2, "%s/%d.png", dataset_images_location, 2);
 
   char text[100];
   int fontFace = cv::FONT_HERSHEY_PLAIN;
@@ -207,8 +213,10 @@ int main(int argc, char** argv) {
   auto groundScales = getAbsoluteScales();
 
   for(int numFrame=2; numFrame < MAX_FRAME; numFrame++) {
+	  //KITTI datset
     sprintf(filename, "%s/%06d.png", dataset_images_location, numFrame);
-
+    //Mydataset
+    //sprintf(filename, "%s/%d.png", dataset_images_location, numFrame);
 
     Mat currImage_c = cv::imread(filename);
     cvtColor(currImage_c, currImage, cv::COLOR_BGR2GRAY);
